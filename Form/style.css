@@ -1,0 +1,155 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(46, 46, 46);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: block;
+    width: 50%;
+    min-width: 800px;
+    margin: auto;
+}
+
+.section {
+    background-color: white;
+    margin-bottom: 20px;
+    box-shadow: 1px 1px 1px lightgray;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    height: auto;
+}
+
+.section-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 30px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+h3 {
+    padding: 0;
+    margin: 0;
+}
+
+.section-visibility-button {
+    border: none;
+    border-radius: 100%;
+    height: 35px;
+    width: 35px;
+}
+
+.section-visibility-button:hover {
+    border: 1px solid rgb(44, 44, 255);
+}
+
+.icon-button {
+    background: none;
+    color: rgb(65, 65, 65);
+}
+
+.icon-button:hover {
+    color: rgb(44, 44, 255);
+}
+
+.form-text-input {
+    padding: 5px;
+    border: 1px gray solid;
+    width: 100%;
+    box-sizing: border-box
+}
+
+.section-content {
+    padding: 0px 20px 30px 20px;
+}
+
+.input-with-label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.textinput-with-button {
+    border: 1px gray solid;
+    display: flex;
+}
+
+.input-noborder {
+    border: none;
+}
+
+.consent {
+    display: flex;
+    align-items: center;
+}
+
+input[type=checkbox] {
+    margin-right: 10px;
+}
+
+.main-button {
+    border-radius: 3px;
+    font-size: 16px;
+    border: none;
+    padding: 10px;
+}
+
+.submit-button {
+    background: rgb(44, 44, 255);
+    color: white;
+}
+
+.submit-button:hover {
+    background: rgb(15, 15, 177);
+}
+
+.cancel-button:hover {
+    background: rgb(173, 173, 173);
+}
+
+p {
+    margin: 5px;
+}
+
+.cancel-button {
+    color: rgb(87, 87, 87);
+    background-color: rgb(238, 238, 238);
+}
+
+.from-submit {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.human-veryfication {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px;
+}
+
+.human-veryfication-show {
+    background: none;
+    border: 1px rgb(46, 46, 46) solid;
+    border-radius: 10%;
+}
+
+.human-veryfication-show:hover {
+    border: 1px rgb(44, 44, 255) solid;
+    background: rgb(236, 236, 253);
+}
+
+button {
+    cursor: pointer;
+}
