@@ -16,124 +16,133 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="section">
-            <div class="section-header">
-                <h3>Account data</h3>
-                <button class="icon-button section-visibility-button"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+    <form>
+        <div class="container">
+            <div class="section">
+                <div class="section-header">
+                    <h3>Account data</h3>
+                    <button type="button" class="icon-button section-visibility-button"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+                </div>
+                <div class="section-content">
+                    <div class="section-content-grid">
+                        <div class="input-with-label">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" class="form-text-input">
+                        </div>
+
+                        <div class="input-with-label">
+                            <label for="last-name">Last name:</label>
+                            <input type="text" id="last-name" name="last-name" class="form-text-input">
+                        </div>
+
+                        <div class="input-with-label">
+                            <label for="e-mail">Email:</label>
+                            <input type="email" id="e-mail" name="e-mail" class="form-text-input">
+                            <p class="error-message" id="e-mail-error">Invalid e-mail adress</p>
+                        </div>
+
+                        <div class="input-with-label">
+                            <label for="email-confirm">Confirm email:</label>
+                            <input type="email" id="email-confirm" name="email-confirm" class="form-text-input">
+                            <p class="error-message" id="e-mail-confirm-error">E-mail doesn't match</p>
+                        </div>
+
+                        <div class="input-with-label">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" class="form-text-input">
+                            <p class="error-message" id="password-error">Password needs to have at least 8 charactes, 1 number and 1 special sign</p>
+                        </div>
+
+                        <div class="input-with-label">
+                            <label for="password-confirm">Confirm password:</label>
+                            <div class="textinput-with-button">
+                                <input class="form-text-input input-noborder" type="password" id="password-confirm" name="password-confirm">
+                                <button type="button" class="icon-button input-noborder" id="show-password"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                            </div>
+                            <p class="error-message" id="password-confirm-error">Password doesn't match</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="section-content">
-                <div class="section-content-grid">
-                    <div class="input-with-label">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" class="form-text-input">
-                    </div>
 
-                    <div class="input-with-label">
-                        <label for="last-name">Last name:</label>
-                        <input type="text" id="last-name" name="last-name" class="form-text-input">
-                    </div>
+            <div class="section">
+                <div class="section-header">
+                    <h3>Personal info</h3>
+                    <button type="button" class="icon-button section-visibility-button"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+                </div>
+                <div class="section-content">
+                    <div class="section-content-grid">
+                        <div class="input-with-label">
+                            <label for="country">Country:</label>
+                            <select id="country" name="country" class="form-text-input">
+                                <option value="poland">Poland</option>
+                                <option value="deutschland">Deutschland</option>
+                                <option value="france">France</option>
+                                <option value="czech-republic">Czech Republic</option>
+                            </select>
+                        </div>
+                        <div class="input-with-label">
+                            <label for="city">City:</label>
+                            <input type="text" id="city" name="city" class="form-text-input">
+                        </div>
+                        <div class="input-with-label">
+                            <label for="street">Street:</label>
+                            <input type="street" id="street" name="country" class="form-text-input">
+                        </div>
+                        <div class="input-with-label">
+                            <label for="house-number">House number:</label>
+                            <input type="text" id="house-number" name="house-number" class="form-text-input">
+                        </div>
 
-                    <div class="input-with-label">
-                        <label for="e-mail">Email:</label>
-                        <input type="email" id="e-mail" name="e-mail" class="form-text-input">
+                        <div class="input-with-label">
+                            <label for="postal-code">Postal code:</label>
+                            <input type="text" id="postal-code" name="postal-code" class="form-text-input">
+                        </div>
+                        <div class="input-with-label">
+                            <label for="date-of-birth">Date of birth:</label>
+                            <input type="date" id="date-of-birth" name="date-of-birth" class="form-text-input">
+                            <p class="error-message" id="date-of-birth-error">You have to be at least 13 years old</p>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="input-with-label">
-                        <label for="email-confirm">Confirm email:</label>
-                        <input type="email" id="email-confirm" name="email-confirm" class="form-text-input">
-                    </div>
+            </div>
 
-                    <div class="input-with-label">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" class="form-text-input">
-                    </div>
-
-                    <div class="input-with-label">
-                        <label for="password-confirm">Confirm password:</label>
-                        <div class="textinput-with-button">
-                            <input class="form-text-input input-noborder" type="password" id="password-confirm" name="password-confirm">
-                            <button class="icon-button input-noborder"><i class="fa fa-eye" aria-hidden="true"></i></button>
+            <div class="section">
+                <div class="section-header">
+                    <h3>Consents</h3>
+                    <button type="button" class="icon-button section-visibility-button"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+                </div>
+                <div>
+                    <div class="section-content section-content-list">
+                        <div class="consent">
+                            <input type="checkbox" name="consent-1" id="consent-1">
+                            <p>Ut mi massa, finibus nec aliquam eget, euismod eget felis.</p>
+                        </div>
+                        <div class="consent">
+                            <input type="checkbox" name="consent-2" id="consent-2">
+                            <p>Maecenas lorem ligula, maximus eu dui non, ullamcorper ullamcorper purus.</p>
+                        </div>
+                        <div class="consent">
+                            <input type="checkbox" name="consent-3" id="consent-3">
+                            <p>Vestibulum dapibus felis et tempus volutpat. Donec scelerisque viverra ipsum, at viverra ligula.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-        </div>
-
-        <div class="section">
-            <div class="section-header">
-                <h3>Personal info</h3>
-                <button class="icon-button section-visibility-button"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
-            </div>
-            <div class="section-content">
-                <div class="section-content-grid">
-                    <div class="input-with-label">
-                        <label for="country">Country:</label>
-                        <input type="text" id="country" name="country" class="form-text-input">
-                    </div>
-                    <div class="input-with-label">
-                        <label for="city">City:</label>
-                        <input type="text" id="city" name="city" class="form-text-input">
-                    </div>
-                    <div class="input-with-label">
-                        <label for="street">Street:</label>
-                        <input type="street" id="street" name="country" class="form-text-input">
-                    </div>
-                    <div class="input-with-label">
-                        <label for="house-number">House number:</label>
-                        <input type="text" id="house-number" name="house-number" class="form-text-input">
-                    </div>
-
-                    <div class="input-with-label">
-                        <label for="postal-code">Postal code:</label>
-                        <input type="text" id="postal-code" name="postal-code" class="form-text-input">
-                    </div>
-                    <div class="input-with-label">
-                        <label for="date-of-birth">Date of birth:</label>
-                        <input type="date" id="date-of-birth" name="date-of-birth" class="form-text-input">
-                    </div>
-                </div>
+            <div class="human-veryfication">
+                <p>I'm not a robot:</p>
+                <button type="button" class="human-veryfication-show"><i class="fa fa-check" aria-hidden="true" style="visibility: hidden;"></i></button>
             </div>
 
-        </div>
-
-        <div class="section">
-            <div class="section-header">
-                <h3>Consents</h3>
-                <button class="icon-button section-visibility-button"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
-            </div>
-            <div>
-                <div class="section-content section-content-list">
-                    <div class="consent">
-                        <input type="checkbox" name="consent-1" id="consent-1">
-                        <p>Ut mi massa, finibus nec aliquam eget, euismod eget felis.</p>
-                    </div>
-                    <div class="consent">
-                        <input type="checkbox" name="consent-2" id="consent-2">
-                        <p>Maecenas lorem ligula, maximus eu dui non, ullamcorper ullamcorper purus.</p>
-                    </div>
-                    <div class="consent">
-                        <input type="checkbox" name="consent-3" id="consent-3">
-                        <p>Vestibulum dapibus felis et tempus volutpat. Donec scelerisque viverra ipsum, at viverra ligula.</p>
-                    </div>
-                </div>
+            <div class="from-submit">
+                <button class="main-button cancel-button">Clear</button>
+                <button class="main-button submit-button" type="submit">Submit</button>
             </div>
         </div>
-
-        <div class="human-veryfication">
-            <p>I'm not a robot:</p>
-            <button class="human-veryfication-show"><i class="fa fa-check" aria-hidden="true" style="visibility: hidden;"></i></button>
-        </div>
-
-        <div class="from-submit">
-            <button class="main-button cancel-button">Clear</button>
-            <button class="main-button submit-button">Submit</button>
-        </div>
-    </div>
-
-
-
+    </form>
 
 </body>
 
