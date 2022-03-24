@@ -1,3 +1,7 @@
+Date.prototype.isValid = function() {
+    return this.getTime() === this.getTime();
+};
+
 //section hiding
 
 let sectionVisibilityButtons = document.getElementsByClassName('section-visibility-button')
@@ -82,7 +86,7 @@ for (let i = 0; i < captchaImages.length; i++) {
 }
 
 function captchaImageOnClick(captchaImage, index) {
-    if (captchaImage.className = 'captcha-image') {
+    if (captchaImage.className == 'captcha-image') {
         imageSelect(captchaImage, index)
     } else {
         imageDeselect(captchaImage, index)
@@ -132,29 +136,6 @@ function checkCaptcha() {
     captchaValidated = true
 }
 
-
-Date.prototype.isValid = function() {
-    return this.getTime() === this.getTime();
-};
-
-function validateDateOfBirth(DOBInput) {
-    let enteredDate = new Date(DOBInput.value)
-
-    if (!enteredDate.isValid() || diff_years(enteredDate) < 13 || diff_years(enteredDate) < 0) {
-        DOBInput.setAttribute('class', 'input-invalid')
-        document.getElementById('date-of-birth-error').style.display = 'block'
-    } else {
-        DOBInput.setAttribute('class', 'form-text-input')
-        document.getElementById('date-of-birth-error').style.display = 'none'
-    }
-
-    function diff_years(enteredDate) {
-        var diff = (enteredDate.getTime() - Date.now()) / 1000;
-        diff /= (60 * 60 * 24);
-        return Math.abs(Math.round(diff / 365.25));
-    }
-}
-
 function showPassword(passwordInput, passwordInputConfirm) {
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text'
@@ -165,159 +146,235 @@ function showPassword(passwordInput, passwordInputConfirm) {
     }
 }
 
-function validatePassword(passwordInput) {
-    if (!passwordInput.value.match(
-            /^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,})$/
-        )) {
-        passwordInput.setAttribute('class', 'input-invalid')
-        document.getElementById('password-error').style.display = 'block'
-    } else {
-        passwordInput.setAttribute('class', 'form-text-input')
-        document.getElementById('password-error').style.display = 'none'
-    }
-
-}
-
-function validatePasswordConfirm(passwordInput, passwordInputConfirm) {
-    if (passwordInput.value != passwordInputConfirm.value) {
-        passwordInputConfirm.parentElement.setAttribute('class', 'input-with-button-invalid')
-        document.getElementById('password-confirm-error').style.display = 'block'
-    } else {
-        passwordInputConfirm.parentElement.setAttribute('class', 'textinput-with-button')
-        document.getElementById('password-confirm-error').style.display = 'none'
-    }
-}
-
-function validateEmailConfirm(emailInput, emailInputConfirm) {
-    if (emailInput.value != emailInputConfirm.value) {
-        emailInputConfirm.setAttribute('class', 'input-invalid')
-        document.getElementById('e-mail-confirm-error').style.display = 'block'
-    } else {
-        emailInputConfirm.setAttribute('class', 'form-text-input')
-        document.getElementById('e-mail-confirm-error').style.display = 'none'
-    }
-}
-
-function validateEmail(emailInput) {
-    if (!emailInput.value.toLowerCase().match(
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        )) {
-        emailInput.setAttribute('class', 'input-invalid')
-        document.getElementById('e-mail-error').style.display = 'block'
-    } else {
-        emailInput.setAttribute('class', 'form-text-input')
-        document.getElementById('e-mail-error').style.display = 'none'
-    }
-}
-
-function validateTextInput(input) {
-    if (input.value == '') {
-        input.className = 'input-invalid'
-        input.nextElementSibling.style.display = 'block'
-    } else {
-        input.className = 'form-text-input'
-        input.nextElementSibling.style.display = 'none'
-    }
-
-    console.log(input.value)
-    console.log(input.nextElementSibling)
-}
-
-function validateConsents(consent1, consent2) {
-    if (consent1.checked == false || consent2.checked == false)
-        document.getElementById('consent-error').style.display = 'block'
-    else
-        document.getElementById('consent-error').style.display = 'none'
-}
-
-function validateCaptcha() {
-    if (!captchaValidated) {
-        document.getElementById('show-modal').className = 'human-veryfication-error'
-        document.getElementById('human-veryfication-error').style.display = 'block'
-    } else {
-        document.getElementById('show-modal').className = 'human-veryfication-show'
-        document.getElementById('human-veryfication-error').style.display = 'none'
-    }
-}
-
-
-let nameInput = document.getElementById('first-name')
-let lastNameInput = document.getElementById('last-name')
-
-
-let emailInput = document.getElementById('e-mail')
-emailInput.addEventListener('input', function() { validateEmail(emailInput) })
-emailInput.addEventListener('input', function() { validateEmailConfirm(emailInput, emailInputConfirm) })
-
-let emailInputConfirm = document.getElementById("email-confirm")
-emailInputConfirm.addEventListener('input', function() { validateEmailConfirm(emailInput, emailInputConfirm) })
-
-let passwordInput = document.getElementById('password')
-passwordInput.addEventListener('input', function() { validatePassword(passwordInput) })
-passwordInput.addEventListener('input', function() { validatePasswordConfirm(passwordInput, passwordInputConfirm) })
-
-let passwordInputConfirm = document.getElementById("password-confirm")
-passwordInputConfirm.addEventListener('input', function() { validatePasswordConfirm(passwordInput, passwordInputConfirm) })
-
 let showPasswordButton = document.getElementById("show-password")
 showPasswordButton.onclick = function() { showPassword(passwordInput, passwordInputConfirm) }
 
+//validation
+
+class ValidationRule {
+    constructor(input) {
+        if (input) {
+            this.input = input
+
+            let self = this
+            this.input.addEventListener('onchange', function() { self.isInputValid() })
+            this.input.addEventListener('input', function() { self.isInputValid() })
+        }
+    }
+
+    isInputValid() {
+        throw ("not implemented exepction")
+    }
+}
+
+class DOBValidation extends ValidationRule {
+    isInputValid() {
+        let enteredDate = new Date(this.input.value)
+
+        if (!enteredDate.isValid() || this.diff_years(enteredDate) < 13 || diff_years(enteredDate) < 0) {
+            this.input.setAttribute('class', 'input-invalid')
+            document.getElementById('date-of-birth-error').style.display = 'block'
+            return false
+        } else {
+            this.input.setAttribute('class', 'form-text-input')
+            document.getElementById('date-of-birth-error').style.display = 'none'
+            return true
+        }
+    }
+
+    diff_years(enteredDate) {
+        var diff = (enteredDate.getTime() - Date.now()) / 1000;
+        diff /= (60 * 60 * 24);
+        return Math.abs(Math.round(diff / 365.25));
+    }
+}
+
+class PasswordValidation extends ValidationRule {
+    isInputValid() {
+        if (!this.input.value.match(
+                /^((?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,})$/
+            )) {
+            this.input.setAttribute('class', 'input-invalid')
+            document.getElementById('password-error').style.display = 'block'
+            return false
+        } else {
+            this.input.setAttribute('class', 'form-text-input')
+            document.getElementById('password-error').style.display = 'none'
+            return true
+        }
+    }
+}
+
+class PasswordConfirmValidation extends ValidationRule {
+    constructor(input, inputConfirm) {
+        super(input)
+        this.inputConfirm = inputConfirm
+        self = this
+        this.inputConfirm.addEventListener('onchange', function() { self.isInputValid() })
+        this.inputConfirm.addEventListener('input', function() { self.isInputValid() })
+    }
+
+
+    isInputValid() {
+        if (this.input.value != this.inputConfirm.value) {
+            this.inputConfirm.parentElement.setAttribute('class', 'input-with-button-invalid')
+            document.getElementById('password-confirm-error').style.display = 'block'
+            return false
+        } else {
+            this.inputConfirm.parentElement.setAttribute('class', 'textinput-with-button')
+            document.getElementById('password-confirm-error').style.display = 'none'
+            return true
+        }
+    }
+}
+
+class EmailValidation extends ValidationRule {
+    isInputValid() {
+        if (!this.input.value.toLowerCase().match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            )) {
+            this.input.setAttribute('class', 'input-invalid')
+            document.getElementById('e-mail-error').style.display = 'block'
+            return false
+        } else {
+            this.input.setAttribute('class', 'form-text-input')
+            document.getElementById('e-mail-error').style.display = 'none'
+            return true
+        }
+    }
+}
+
+class EmailConfirmValidation extends ValidationRule {
+    constructor(input, inputConfirm) {
+        super(input)
+        this.inputConfirm = inputConfirm
+        self = this
+        this.inputConfirm.addEventListener('onchange', function() { self.isInputValid() })
+        this.inputConfirm.addEventListener('input', function() { self.isInputValid() })
+    }
+    isInputValid() {
+        if (this.input.value != this.inputConfirm.value) {
+            this.inputConfirm.setAttribute('class', 'input-invalid')
+            document.getElementById('e-mail-confirm-error').style.display = 'block'
+            return false
+        } else {
+            this.inputConfirm.setAttribute('class', 'form-text-input')
+            document.getElementById('e-mail-confirm-error').style.display = 'none'
+            return true
+        }
+    }
+}
+
+class TextInputValidation extends ValidationRule {
+    isInputValid() {
+        if (this.input.value.trim().length > 0) {
+            this.input.className = 'form-text-input'
+            this.input.nextElementSibling.style.display = 'none'
+            return true
+        } else {
+            this.input.className = 'input-invalid'
+            this.input.nextElementSibling.style.display = 'block'
+            return false;
+        }
+    }
+}
+
+class ConsentValidation extends ValidationRule {
+    constructor(consent1, consent2) {
+        super()
+        this.consent1 = consent1
+        this.consent2 = consent2
+    }
+
+    isInputValid() {
+        if (this.consent1.checked == false || this.consent2.checked == false) {
+            document.getElementById('consent-error').style.display = 'block'
+            return false
+        } else {
+            document.getElementById('consent-error').style.display = 'none'
+            return true
+        }
+
+    }
+}
+
+class CaptchaValidation extends ValidationRule {
+    isInputValid() {
+        if (!captchaValidated) {
+            document.getElementById('show-modal').className = 'human-veryfication-error'
+            document.getElementById('human-veryfication-error').style.display = 'block'
+            return false
+        } else {
+            document.getElementById('show-modal').className = 'human-veryfication-show'
+            document.getElementById('human-veryfication-error').style.display = 'none'
+            return true
+        }
+    }
+}
+
+
+
+
+let nameInput = document.getElementById('first-name')
+
+let lastNameInput = document.getElementById('last-name')
+
+let emailInput = document.getElementById('e-mail')
+
+let emailInputConfirm = document.getElementById("email-confirm")
+
+let passwordInput = document.getElementById('password')
+
+let passwordInputConfirm = document.getElementById("password-confirm")
+
 let DOBInput = document.getElementById("date-of-birth")
-DOBInput.addEventListener('onchange', function() { validateDateOfBirth(DOBInput) })
-DOBInput.addEventListener('input', function() { validateDateOfBirth(DOBInput) })
 
 let cityInput = document.getElementById('city')
+
 let streetInput = document.getElementById('street')
+
 let houseNumberInput = document.getElementById('house-number')
-let postalCode = document.getElementById('postal-code')
+
+let postalCodeInput = document.getElementById('postal-code')
 
 let consent1 = document.getElementById('consent-1')
 let consent2 = document.getElementById('consent-2')
 
 let form = document.getElementById("form")
 
+let validationRules = [
+    new TextInputValidation(nameInput),
+    new TextInputValidation(lastNameInput),
+    new EmailValidation(emailInput),
+    new EmailConfirmValidation(emailInput, emailInputConfirm),
+    new PasswordValidation(passwordInput),
+    new PasswordConfirmValidation(passwordInput, passwordInputConfirm),
+    new TextInputValidation(cityInput),
+    new TextInputValidation(streetInput),
+    new TextInputValidation(houseNumberInput),
+    new TextInputValidation(postalCodeInput),
+    new DOBValidation(DOBInput),
+    new ConsentValidation(consent1, consent2),
+    new CaptchaValidation()
+]
+
 form.addEventListener('submit', (e) => {
     e.preventDefault()
-
-    validateTextInput(nameInput)
-
-    validateTextInput(lastNameInput)
-
-    validateEmail(emailInput)
-
-    validateEmailConfirm(emailInput, emailInputConfirm)
-
-    validateTextInput(cityInput)
-
-    validatePassword(passwordInput)
-
-    validatePasswordConfirm(passwordInput, passwordInputConfirm)
-
-    validateTextInput(cityInput)
-
-    validateTextInput(streetInput)
-
-    validateTextInput(houseNumberInput)
-
-    validateTextInput(postalCode)
-
-    validateDateOfBirth(DOBInput)
-
-    validateConsents(consent1, consent2)
-
-
 
     validateForm()
 
 })
 
 function validateForm() {
-    let errors = document.getElementsByClassName('error-message')
+    let isFormValid = true
 
-    for (let i = 0; i < errors.length; i++) {
-        if (errors.item(i).style.display = 'block') return
+    validationRules.forEach(rule => {
+        if (!rule.isInputValid()) isFormValid = false
+    })
+
+    if (isFormValid) {
+        form.reset()
+        alert("Form sent!")
     }
 
-    form.reset()
-    alert("Form sent!")
 }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Form</title>
 
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
@@ -25,10 +25,11 @@
                 </div>
                 <div class="section-content">
                     <div class="section-content-grid">
+
                         <div class="input-with-label">
                             <label for="first-name">Name:</label>
                             <input type="text" id="first-name" name="first-name" class="form-text-input">
-                            <p class="error-message">Field required</p>
+                            <p class="error-message" id="test">Field required</p>
                         </div>
 
                         <div class="input-with-label">
@@ -168,18 +169,20 @@
                 <span class="close">&times;</span>
             </div>
             <div class="captcha-images-grid">
-                <img src="/images/1.jpg" class="captcha-image" alt="">
-                <img src="/images/2.jpg" class="captcha-image" alt="">
-                <img src="/images/3.jpg" class="captcha-image" alt="">
-                <img src="/images/4.jpg" class="captcha-image" alt="">
-                <img src="/images/5.jpg" class="captcha-image" alt="">
-                <img src="/images/6.jpg" class="captcha-image" alt="">
-                <img src="/images/7.jpg" class="captcha-image" alt="">
-                <img src="/images/8.jpg" class="captcha-image" alt="">
-                <img src="/images/9.png" class="captcha-image" alt="">
+                <img src="images/1.jpg" class="captcha-image" alt="">
+                <img src="images/2.jpg" class="captcha-image" alt="">
+                <img src="images/3.jpg" class="captcha-image" alt="">
+                <img src="images/4.jpg" class="captcha-image" alt="">
+                <img src="images/5.jpg" class="captcha-image" alt="">
+                <img src="images/6.jpg" class="captcha-image" alt="">
+                <img src="images/7.jpg" class="captcha-image" alt="">
+                <img src="images/8.jpg" class="captcha-image" alt="">
+                <img src="images/9.png" class="captcha-image" alt="">
             </div>
             <div class="modal-footer">
-                <p class="error-message-captcha" id="captcha-error"><b>Try again</b></p>
+                <div class="center">
+                    <p class="error-message-captcha" id="captcha-error"><b>Try again</b></p>
+                </div>
                 <button type="button" class="main-button submit-button" id="captcha-submit">Submit</button>
             </div>
         </div>
