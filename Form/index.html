@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
+    <title>Document</title>
 
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
@@ -25,11 +25,10 @@
                 </div>
                 <div class="section-content">
                     <div class="section-content-grid">
-
                         <div class="input-with-label">
                             <label for="first-name">Name:</label>
                             <input type="text" id="first-name" name="first-name" class="form-text-input">
-                            <p class="error-message" id="test">Field required</p>
+                            <p class="error-message">Field required</p>
                         </div>
 
                         <div class="input-with-label">
@@ -40,13 +39,13 @@
 
                         <div class="input-with-label">
                             <label for="e-mail">Email:</label>
-                            <input type="email" id="e-mail" name="e-mail" class="form-text-input">
+                            <input type="text" id="e-mail" name="e-mail" class="form-text-input">
                             <p class="error-message" id="e-mail-error">Invalid e-mail adress</p>
                         </div>
 
                         <div class="input-with-label">
                             <label for="email-confirm">Confirm email:</label>
-                            <input type="email" id="email-confirm" name="email-confirm" class="form-text-input">
+                            <input type="text" id="email-confirm" name="email-confirm" class="form-text-input">
                             <p class="error-message" id="e-mail-confirm-error">E-mail doesn't match</p>
                         </div>
 
@@ -137,7 +136,7 @@
                             <input type="checkbox" name="consent-3" id="consent-3">
                             <p>Vestibulum dapibus felis et tempus volutpat. Donec scelerisque viverra ipsum, at viverra ligula.</p>
                         </div>
-                        <p class="error-message" id="consent-error">Check required consents</p>
+                        <p class="error-message center" id="consent-error">Check required consents</p>
                     </div>
 
                 </div>
@@ -158,10 +157,6 @@
         </div>
     </form>
 
-    <footer>
-        <a href='https://pl.freepik.com/wektory/technologia'>Technologia plik wektorowy utworzone przez storyset - pl.freepik.com</a>
-    </footer>
-
     <div id="captcha-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -169,24 +164,26 @@
                 <span class="close">&times;</span>
             </div>
             <div class="captcha-images-grid">
-                <img src="images/1.jpg" class="captcha-image" alt="">
-                <img src="images/2.jpg" class="captcha-image" alt="">
-                <img src="images/3.jpg" class="captcha-image" alt="">
-                <img src="images/4.jpg" class="captcha-image" alt="">
-                <img src="images/5.jpg" class="captcha-image" alt="">
-                <img src="images/6.jpg" class="captcha-image" alt="">
-                <img src="images/7.jpg" class="captcha-image" alt="">
-                <img src="images/8.jpg" class="captcha-image" alt="">
-                <img src="images/9.png" class="captcha-image" alt="">
+                <img src="/images/1.jpg" class="captcha-image" alt="">
+                <img src="/images/2.jpg" class="captcha-image" alt="">
+                <img src="/images/3.jpg" class="captcha-image" alt="">
+                <img src="/images/4.jpg" class="captcha-image" alt="">
+                <img src="/images/5.jpg" class="captcha-image" alt="">
+                <img src="/images/6.jpg" class="captcha-image" alt="">
+                <img src="/images/7.jpg" class="captcha-image" alt="">
+                <img src="/images/8.jpg" class="captcha-image" alt="">
+                <img src="/images/9.png" class="captcha-image" alt="">
             </div>
             <div class="modal-footer">
-                <div class="center">
-                    <p class="error-message-captcha" id="captcha-error"><b>Try again</b></p>
-                </div>
+                <p class="error-message-captcha" id="captcha-error"><b>Try again</b></p>
                 <button type="button" class="main-button submit-button" id="captcha-submit">Submit</button>
             </div>
         </div>
     </div>
+
+    <footer>
+        <a href='https://www.freepik.com/vectors/technology'>Technology vector created by storyset - www.freepik.com</a>
+    </footer>
 
 </body>
 

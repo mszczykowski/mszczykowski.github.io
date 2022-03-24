@@ -11,7 +11,7 @@ body {
     min-height: 100%;
     display: grid;
     grid-template-rows: 1fr auto;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
     color: rgb(46, 46, 46);
     margin-top: 40px;
     margin-bottom: 20px;
@@ -25,7 +25,7 @@ body {
 .container {
     display: block;
     width: 40%;
-    min-width: 500px;
+    min-width: 550px;
     margin: 0 10%;
     border: 1px solid lightgray;
     background-color: white;
@@ -85,8 +85,9 @@ input:focus {
 }
 
 .input-invalid {
-    background-color: #facbcf;
+    background-color: #fde0e2;
     border: none;
+    font-weight: 400;
     padding: 12px 20px;
     border-radius: 30rem;
     box-sizing: border-box;
@@ -94,7 +95,7 @@ input:focus {
 }
 
 .input-with-button-invalid {
-    background-color: #facbcf;
+    background-color: #fde0e2;
     border-radius: 30rem;
     display: flex;
     padding-right: 10px;
@@ -103,6 +104,7 @@ input:focus {
 .error-message {
     color: #fd4554;
     display: none;
+    font-size: 14px;
     margin: 0px 15px;
 }
 
@@ -162,6 +164,7 @@ input:focus {
 
 p {
     margin: 8px;
+    line-height: 1.5;
 }
 
 .cancel-button {
@@ -179,16 +182,30 @@ p {
 .human-veryfication {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin: 20px;
+    align-items: center;
+    gap: 5px;
+    margin: 10px;
 }
 
 .human-veryfication-show {
     background: none;
     border: 1px rgb(46, 46, 46) solid;
     border-radius: 10%;
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
+}
+
+.human-veryfication-show-error {
+    background: none;
+    border: 1px #ff4f5a solid;
+    border-radius: 10%;
+    height: 25px;
+    width: 25px;
+}
+
+.human-veryfication-show-error:hover {
+    border: 1px #ff4f5a solid;
+    background: #ffdcde;
 }
 
 .human-veryfication-show:hover {
@@ -312,10 +329,10 @@ footer {
 
 label {
     margin-left: 15px;
+    font-size: 14px;
 }
 
-section:focus {
-    margin-right: 400px;
+select:focus {
     outline: none;
 }
 
@@ -331,10 +348,20 @@ input[type=checkbox] {
     margin-right: 10px;
 }
 
-::-webkit-datetime-edit-text {
-    font-family: 'Roboto', sans-serif;
-}
-
 a {
     color: #ff4f5a;
+}
+
+.section-content-list {
+    display: grid;
+    grid-column: min-content;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    text-align: justify;
+}
+
+.center {
+    text-align: center;
 }

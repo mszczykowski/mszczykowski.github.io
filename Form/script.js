@@ -1,3 +1,5 @@
+//misic
+
 Date.prototype.isValid = function() {
     return this.getTime() === this.getTime();
 };
@@ -152,17 +154,43 @@ showPasswordButton.onclick = function() { showPassword(passwordInput, passwordIn
 //validation
 
 class ValidationRule {
-    constructor(input) {
+    constructor(input, inputConfirm) {
+        let self = this
         if (input) {
             this.input = input
 
-            let self = this
-            this.input.addEventListener('onchange', function() { self.isInputValid() })
-            this.input.addEventListener('input', function() { self.isInputValid() })
+            this.input.addEventListener('onchange', function() { self.validate() })
+            this.input.addEventListener('input', function() { self.validate() })
         }
+        if (inputConfirm) {
+            this.inputConfirm = inputConfirm
+
+            this.inputConfirm.addEventListener('onchange', function() { self.validate() })
+            this.inputConfirm.addEventListener('input', function() { self.validate() })
+        }
+
+    }
+
+    validate() {
+        let isValid = this.isInputValid()
+
+        console.log('chuj')
+
+        if (!isValid) this.showValidationError()
+        else this.hideValidationError()
+
+        return isValid
     }
 
     isInputValid() {
+        throw ("not implemented exepction")
+    }
+
+    showValidationError() {
+        throw ("not implemented exepction")
+    }
+
+    hideValidationError() {
         throw ("not implemented exepction")
     }
 }
@@ -171,15 +199,17 @@ class DOBValidation extends ValidationRule {
     isInputValid() {
         let enteredDate = new Date(this.input.value)
 
-        if (!enteredDate.isValid() || this.diff_years(enteredDate) < 13 || diff_years(enteredDate) < 0) {
-            this.input.setAttribute('class', 'input-invalid')
-            document.getElementById('date-of-birth-error').style.display = 'block'
-            return false
-        } else {
-            this.input.setAttribute('class', 'form-text-input')
-            document.getElementById('date-of-birth-error').style.display = 'none'
-            return true
-        }
+        return (enteredDate.isValid() && this.diff_years(enteredDate) >= 13)
+    }
+
+    showValidationError() {
+        this.input.setAttribute('class', 'input-invalid')
+        document.getElementById('date-of-birth-error').style.display = 'block'
+    }
+
+    hideValidationError() {
+        this.input.setAttribute('class', 'form-text-input')
+        document.getElementById('date-of-birth-error').style.display = 'none'
     }
 
     diff_years(enteredDate) {
@@ -191,91 +221,81 @@ class DOBValidation extends ValidationRule {
 
 class PasswordValidation extends ValidationRule {
     isInputValid() {
-        if (!this.input.value.match(
-                /^((?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,})$/
-            )) {
-            this.input.setAttribute('class', 'input-invalid')
-            document.getElementById('password-error').style.display = 'block'
-            return false
-        } else {
-            this.input.setAttribute('class', 'form-text-input')
-            document.getElementById('password-error').style.display = 'none'
-            return true
-        }
+        return this.input.value.match(
+            /^((?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,})$/
+        )
+    }
+
+    showValidationError() {
+        this.input.setAttribute('class', 'input-invalid')
+        document.getElementById('password-error').style.display = 'block'
+    }
+
+    hideValidationError() {
+        this.input.setAttribute('class', 'form-text-input')
+        document.getElementById('password-error').style.display = 'none'
     }
 }
 
 class PasswordConfirmValidation extends ValidationRule {
-    constructor(input, inputConfirm) {
-        super(input)
-        this.inputConfirm = inputConfirm
-        self = this
-        this.inputConfirm.addEventListener('onchange', function() { self.isInputValid() })
-        this.inputConfirm.addEventListener('input', function() { self.isInputValid() })
-    }
-
 
     isInputValid() {
-        if (this.input.value != this.inputConfirm.value) {
-            this.inputConfirm.parentElement.setAttribute('class', 'input-with-button-invalid')
-            document.getElementById('password-confirm-error').style.display = 'block'
-            return false
-        } else {
-            this.inputConfirm.parentElement.setAttribute('class', 'textinput-with-button')
-            document.getElementById('password-confirm-error').style.display = 'none'
-            return true
-        }
+        return (this.input.value == this.inputConfirm.value)
+    }
+
+    showValidationError() {
+        this.inputConfirm.parentElement.setAttribute('class', 'input-with-button-invalid')
+        document.getElementById('password-confirm-error').style.display = 'block'
+    }
+
+    hideValidationError() {
+        this.inputConfirm.parentElement.setAttribute('class', 'textinput-with-button')
+        document.getElementById('password-confirm-error').style.display = 'none'
     }
 }
 
 class EmailValidation extends ValidationRule {
+
     isInputValid() {
-        if (!this.input.value.toLowerCase().match(
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            )) {
-            this.input.setAttribute('class', 'input-invalid')
-            document.getElementById('e-mail-error').style.display = 'block'
-            return false
-        } else {
-            this.input.setAttribute('class', 'form-text-input')
-            document.getElementById('e-mail-error').style.display = 'none'
-            return true
-        }
+        return this.input.value.toLowerCase().match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        )
+    }
+    showValidationError() {
+        this.input.setAttribute('class', 'input-invalid')
+        document.getElementById('e-mail-error').style.display = 'block'
+    }
+    hideValidationError() {
+        this.input.setAttribute('class', 'form-text-input')
+        document.getElementById('e-mail-error').style.display = 'none'
     }
 }
 
 class EmailConfirmValidation extends ValidationRule {
-    constructor(input, inputConfirm) {
-        super(input)
-        this.inputConfirm = inputConfirm
-        self = this
-        this.inputConfirm.addEventListener('onchange', function() { self.isInputValid() })
-        this.inputConfirm.addEventListener('input', function() { self.isInputValid() })
-    }
     isInputValid() {
-        if (this.input.value != this.inputConfirm.value) {
-            this.inputConfirm.setAttribute('class', 'input-invalid')
-            document.getElementById('e-mail-confirm-error').style.display = 'block'
-            return false
-        } else {
-            this.inputConfirm.setAttribute('class', 'form-text-input')
-            document.getElementById('e-mail-confirm-error').style.display = 'none'
-            return true
-        }
+        return (this.input.value == this.inputConfirm.value)
+    }
+    showValidationError() {
+        this.inputConfirm.setAttribute('class', 'input-invalid')
+        document.getElementById('e-mail-confirm-error').style.display = 'block'
+    }
+    hideValidationError() {
+        this.inputConfirm.setAttribute('class', 'form-text-input')
+        document.getElementById('e-mail-confirm-error').style.display = 'none'
     }
 }
 
 class TextInputValidation extends ValidationRule {
     isInputValid() {
-        if (this.input.value.trim().length > 0) {
-            this.input.className = 'form-text-input'
-            this.input.nextElementSibling.style.display = 'none'
-            return true
-        } else {
-            this.input.className = 'input-invalid'
-            this.input.nextElementSibling.style.display = 'block'
-            return false;
-        }
+        return (this.input.value.trim().length > 0)
+    }
+    showValidationError() {
+        this.input.className = 'input-invalid'
+        this.input.nextElementSibling.style.display = 'block'
+    }
+    hideValidationError() {
+        this.input.className = 'form-text-input'
+        this.input.nextElementSibling.style.display = 'none'
     }
 }
 
@@ -284,35 +304,37 @@ class ConsentValidation extends ValidationRule {
         super()
         this.consent1 = consent1
         this.consent2 = consent2
+
+        let self = this
+
+        this.consent1.addEventListener('click', function() { self.validate() })
+        this.consent2.addEventListener('click', function() { self.validate() })
     }
-
     isInputValid() {
-        if (this.consent1.checked == false || this.consent2.checked == false) {
-            document.getElementById('consent-error').style.display = 'block'
-            return false
-        } else {
-            document.getElementById('consent-error').style.display = 'none'
-            return true
-        }
-
+        return (this.consent1.checked == true && this.consent2.checked == true)
+    }
+    showValidationError() {
+        document.getElementById('consent-error').style.display = 'block'
+    }
+    hideValidationError() {
+        document.getElementById('consent-error').style.display = 'none'
     }
 }
 
 class CaptchaValidation extends ValidationRule {
     isInputValid() {
-        if (!captchaValidated) {
-            document.getElementById('show-modal').className = 'human-veryfication-error'
-            document.getElementById('human-veryfication-error').style.display = 'block'
-            return false
-        } else {
-            document.getElementById('show-modal').className = 'human-veryfication-show'
-            document.getElementById('human-veryfication-error').style.display = 'none'
-            return true
-        }
+        return captchaValidated
+    }
+    showValidationError() {
+        document.getElementById('human-veryfication-error').style.display = 'block'
+        showModal.className = 'human-veryfication-show-error'
+
+    }
+    hideValidationError() {
+        document.getElementById('human-veryfication-error').style.display = 'none'
+        showModal.className = 'human-veryfication-show'
     }
 }
-
-
 
 
 let nameInput = document.getElementById('first-name')
@@ -358,6 +380,12 @@ let validationRules = [
     new CaptchaValidation()
 ]
 
+function clearAllValidationErrors() {
+    validationRules.forEach(rule => {
+        rule.hideValidationError()
+    })
+}
+
 form.addEventListener('submit', (e) => {
     e.preventDefault()
 
@@ -365,11 +393,15 @@ form.addEventListener('submit', (e) => {
 
 })
 
+form.addEventListener('reset', (e) => {
+    clearAllValidationErrors()
+})
+
 function validateForm() {
     let isFormValid = true
 
     validationRules.forEach(rule => {
-        if (!rule.isInputValid()) isFormValid = false
+        if (!rule.validate()) isFormValid = false
     })
 
     if (isFormValid) {
