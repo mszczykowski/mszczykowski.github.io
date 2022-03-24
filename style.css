@@ -32,8 +32,8 @@ body {
     border-radius: 0.5rem;
 }
 
-.section {
-    height: auto;
+.section:nth-child(n+2) {
+    border-top: #ff4f5a solid 2px;
 }
 
 .section-content-grid {
@@ -48,18 +48,12 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 10px 10px 10px 20px;
-    border-bottom: #ff4f5a solid 2px;
 }
 
 .section-visibility-button {
     border: none;
-    border-radius: 100%;
     height: 35px;
     width: 35px;
-}
-
-.section-visibility-button:hover {
-    border: 1px solid #ff4f5a;
 }
 
 .icon-button {
