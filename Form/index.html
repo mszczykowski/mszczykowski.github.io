@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <form>
+    <form id="form">
         <div class="container">
             <div class="section">
                 <div class="section-header">
@@ -26,13 +26,15 @@
                 <div class="section-content">
                     <div class="section-content-grid">
                         <div class="input-with-label">
-                            <label for="name">Name:</label>
-                            <input type="text" id="name" name="name" class="form-text-input">
+                            <label for="first-name">Name:</label>
+                            <input type="text" id="first-name" name="first-name" class="form-text-input">
+                            <p class="error-message">Field required</p>
                         </div>
 
                         <div class="input-with-label">
                             <label for="last-name">Last name:</label>
                             <input type="text" id="last-name" name="last-name" class="form-text-input">
+                            <p class="error-message">Field required</p>
                         </div>
 
                         <div class="input-with-label">
@@ -75,29 +77,35 @@
                     <div class="section-content-grid">
                         <div class="input-with-label">
                             <label for="country">Country:</label>
-                            <select id="country" name="country" class="form-text-input">
-                                <option value="poland">Poland</option>
-                                <option value="deutschland">Deutschland</option>
-                                <option value="france">France</option>
-                                <option value="czech-republic">Czech Republic</option>
-                            </select>
+                            <div class="textinput-with-button">
+                                <select id="country" name="country" class="form-text-input">
+                                    <option value="poland">Poland</option>
+                                    <option value="deutschland">Deutschland</option>
+                                    <option value="france">France</option>
+                                    <option value="czech-republic">Czech Republic</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="input-with-label">
                             <label for="city">City:</label>
                             <input type="text" id="city" name="city" class="form-text-input">
+                            <p class="error-message">Field required</p>
                         </div>
                         <div class="input-with-label">
                             <label for="street">Street:</label>
                             <input type="street" id="street" name="country" class="form-text-input">
+                            <p class="error-message">Field required</p>
                         </div>
                         <div class="input-with-label">
                             <label for="house-number">House number:</label>
                             <input type="text" id="house-number" name="house-number" class="form-text-input">
+                            <p class="error-message">Field required</p>
                         </div>
 
                         <div class="input-with-label">
                             <label for="postal-code">Postal code:</label>
                             <input type="text" id="postal-code" name="postal-code" class="form-text-input">
+                            <p class="error-message">Field required</p>
                         </div>
                         <div class="input-with-label">
                             <label for="date-of-birth">Date of birth:</label>
@@ -118,31 +126,64 @@
                     <div class="section-content section-content-list">
                         <div class="consent">
                             <input type="checkbox" name="consent-1" id="consent-1">
-                            <p>Ut mi massa, finibus nec aliquam eget, euismod eget felis.</p>
+                            <p>Ut mi massa, finibus nec aliquam eget, euismod eget felis. <b>(required)</b></p>
                         </div>
                         <div class="consent">
                             <input type="checkbox" name="consent-2" id="consent-2">
-                            <p>Maecenas lorem ligula, maximus eu dui non, ullamcorper ullamcorper purus.</p>
+                            <p>Maecenas lorem ligula, maximus eu dui non, ullamcorper ullamcorper purus. <b>(required)</b></p>
                         </div>
                         <div class="consent">
                             <input type="checkbox" name="consent-3" id="consent-3">
                             <p>Vestibulum dapibus felis et tempus volutpat. Donec scelerisque viverra ipsum, at viverra ligula.</p>
                         </div>
+                        <p class="error-message" id="consent-error">Check required consents</p>
                     </div>
+
                 </div>
             </div>
-
-            <div class="human-veryfication">
-                <p>I'm not a robot:</p>
-                <button type="button" class="human-veryfication-show"><i class="fa fa-check" aria-hidden="true" style="visibility: hidden;"></i></button>
+            <div class="human-veryfication-with-error">
+                <div class="human-veryfication">
+                    <p>I'm not a robot:</p>
+                    <button type="button" class="human-veryfication-show" id="show-modal"><i class="fa fa-check" aria-hidden="true" style="visibility: hidden;"></i></button>
+                </div>
+                <p class="error-message" id="human-veryfication-error">Confirm that you are human</p>
             </div>
 
+
             <div class="from-submit">
-                <button class="main-button cancel-button">Clear</button>
+                <button type="reset" class="main-button cancel-button">Clear</button>
                 <button class="main-button submit-button" type="submit">Submit</button>
             </div>
         </div>
     </form>
+
+    <footer>
+        <a href='https://pl.freepik.com/wektory/technologia'>Technologia plik wektorowy utworzone przez storyset - pl.freepik.com</a>
+    </footer>
+
+    <div id="captcha-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Choose pictures with cars</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="captcha-images-grid">
+                <img src="/images/1.jpg" class="captcha-image" alt="">
+                <img src="/images/2.jpg" class="captcha-image" alt="">
+                <img src="/images/3.jpg" class="captcha-image" alt="">
+                <img src="/images/4.jpg" class="captcha-image" alt="">
+                <img src="/images/5.jpg" class="captcha-image" alt="">
+                <img src="/images/6.jpg" class="captcha-image" alt="">
+                <img src="/images/7.jpg" class="captcha-image" alt="">
+                <img src="/images/8.jpg" class="captcha-image" alt="">
+                <img src="/images/9.png" class="captcha-image" alt="">
+            </div>
+            <div class="modal-footer">
+                <p class="error-message-captcha" id="captcha-error"><b>Try again</b></p>
+                <button type="button" class="main-button submit-button" id="captcha-submit">Submit</button>
+            </div>
+        </div>
+    </div>
 
 </body>
 
