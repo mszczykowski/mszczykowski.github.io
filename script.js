@@ -174,8 +174,6 @@ class ValidationRule {
     validate() {
         let isValid = this.isInputValid()
 
-        console.log('chuj')
-
         if (!isValid) this.showValidationError()
         else this.hideValidationError()
 
